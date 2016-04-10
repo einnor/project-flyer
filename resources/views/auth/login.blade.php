@@ -7,6 +7,11 @@
     <div class="row">
         <dic class="col-md-6 col-md-offset-3">
 
+            <h1>Login</h1>
+
+            <hr />
+
+            @include('errors')
 
             <form method="POST" action="/auth/login">
                 {!! csrf_field() !!}
@@ -14,12 +19,12 @@
 
                 <div class="form-group">
                     <label for="email">Email: </label>
-                    <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}">
+                    <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password: </label>
-                    <input type="password" id="password" class="form-control" name="password" id="password">
+                    <input type="password" id="password" class="form-control" name="password" id="password" required>
                 </div>
 
                 <div class="form-group">
