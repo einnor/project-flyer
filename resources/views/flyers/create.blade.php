@@ -6,24 +6,21 @@
 
     <hr>
 
-    <div class="row">
-        <form method="POST" action="/flyers" enctype="multipart/form-data" class="col-md-6">
+    <form method="POST" action="/flyers" enctype="multipart/form-data" class="col-md-12">
 
-            @if($errors->any())
-                <ul class="alert alert-danger" style="list-style-type:none;">
-                    @foreach($errors->all() as $error)
-                        <li>
-                            {{ $error }}
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
+        @if($errors->any())
+            <ul class="alert alert-danger" style="list-style-type:none;">
+                @foreach($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                @endforeach
+            </ul>
+        @endif
 
-            @include('flyers.form')
+        @include('flyers.form')
 
 
-        </form>
-    </div>
-
+    </form>
 
 @stop
