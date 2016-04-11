@@ -8,7 +8,6 @@ use App\Photo;
 use App\Http\Requests;
 use App\Http\Requests\FlyerRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddPhotoRequest;
 
 class FlyersController extends Controller
 {
@@ -49,13 +48,15 @@ class FlyersController extends Controller
      */
     public function store(FlyerRequest $request)
     {   //Persist the data
-        Flyer::create($request->all());
+        $flyer = $this->user->publish(
+            new Flyer($request->all())
+        );
 
         //Show Flash message
         flash()->success('Success','Your flyer has been created!');
 
         //Redirect
-        return redirect()->back();
+        return redirect(flyer_path($flyer));
     }
 
     /**
@@ -79,19 +80,6 @@ class FlyersController extends Controller
     public function edit($id)
     {
         //
-    }
-
-
-    /**
-     * @param $zip
-     * @param $street
-     * @param AddPhotoRequest $request
-     */
-    public function addPhoto($zip, $street, AddPhotoRequest $request){
-
-        $photo = Photo::fromFile($request->file('photo'));
-
-        Flyer::locatedAt($zip, $street)->addPhoto($photo);
     }
 
 

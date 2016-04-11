@@ -71,4 +71,5 @@ class Flyer extends Model
     public function ownedBy(User $user){
         return $this->user_id == $user->id;
     }
+
 }
