@@ -13,6 +13,7 @@
 
 
 
+Route::get('/', 'PagesController@home');
 
 
 // Authentication routes...
@@ -25,9 +26,6 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 
-Route::get('/', function () {
-    return view('pages.home');
-});
 
 Route::resource('flyers', 'FlyersController');
 
