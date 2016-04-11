@@ -31,17 +31,23 @@
 
             @endforeach
 
+
+            @if($user && $user->owns($flyer))
+
+                <hr />
+
+
+                <form id="addPhotosForm" class="dropzone" method="POST" action="{{ route('store_photo_path', [$flyer->zip, $flyer->street]) }}">
+                    {{ csrf_field() }}
+                </form>
+
+            @endif
+
         </div>
     </div>
 
 
-    <hr />
 
-    <h1>Add Your Photos</h1>
-
-    <form id="addPhotosForm" class="dropzone" method="POST" action="{{ route('store_photo_path', [$flyer->zip, $flyer->street]) }}">
-        {{ csrf_field() }}
-    </form>
 
 
 @stop
